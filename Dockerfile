@@ -352,8 +352,9 @@ service cron start\n\
 service memcached start\n\
 service redis-server start\n\
 service supervisor start\n\
-service php7.4-fpm start\n\
+service php-fpm start\n\
 nginx -g "daemon off;"\n\' >> /opt/startup.sh; \
+sed -i "s/php-fpm/php${PHP_VERSION}-fpm/" /opt/startup.sh; \
 chmod +x /opt/startup.sh;
 
 CMD /opt/startup.sh
