@@ -249,7 +249,7 @@ RUN NGINX=$(ps aux | grep nginx | grep -v grep); \
 
 RUN PHP=$(ps aux | grep php-fpm | grep -v grep);\
     if [[ ! -z $PHP ]]; then \
-    service php8.0-fpm restart > /dev/null 2>&1; \
+    service php$PHP_VERSION-fpm restart > /dev/null 2>&1; \
     fi;
 
 RUN usermod -a -G www-data $HOST_USER; \
