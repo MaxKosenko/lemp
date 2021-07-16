@@ -74,7 +74,9 @@ RUN echo "$HOST_USER ALL=NOPASSWD: /usr/sbin/service php$PHP_VERSION-fpm reload"
     echo "$HOST_USER ALL=NOPASSWD: /usr/bin/supervisorctl *" >> /etc/sudoers.d/supervisor;
 
 COPY php/php$PHP_VERSION.ini /etc/php/$PHP_VERSION/cli/php.ini
- 
+
+COPY php/php$PHP_VERSION.ini /etc/php/$PHP_VERSION/fpm/php.ini
+
 RUN echo "Configuring PHPRedis"; \
     echo "extension=redis.so" > /etc/php/$PHP_VERSION/mods-available/redis.ini; \
     yes '' | apt install "php$PHP_VERSION-redis";
